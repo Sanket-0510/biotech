@@ -26,6 +26,7 @@ const { checkForAuthentication } = require('./middlewares/auth.js');
 
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())
+
 app.use(checkForAuthentication())
 
 

@@ -86,6 +86,8 @@ const handleComment = async (req, res) => {
 const handleGetAllPosts = async (req, res) => {
   try {
     const posts = await Post.find(); 
+
+    console.log("here in post")
     res.status(200).json(posts); 
   } catch (err) {
     console.error(err);

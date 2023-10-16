@@ -34,6 +34,7 @@ const handlesignup = async (req, res) => {
 //handler function to handle sigin of user 
 const handlesignin = async (req, res) => {
   try {
+    console.log("here in sigin in")
     const requestData = JSON.parse(req.body.data);
     console.log(requestData)
     if (requestData) {
