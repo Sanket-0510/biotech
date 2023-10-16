@@ -2,7 +2,7 @@ const {User} = require("../models/user");
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const {isStrongPassword} = require("../util");
 
-
+//handler function to handle the signup
 const handlesignup = async (req, res) => {
   try {
     const { name, email, about, twitter, facebook, linkedin, password } =req.body;
@@ -31,10 +31,9 @@ const handlesignup = async (req, res) => {
   }
 };
 
-
+//handler function to handle sigin of user 
 const handlesignin = async (req, res) => {
   try {
-
     const requestData = JSON.parse(req.body.data);
     console.log(requestData)
     if (requestData) {
@@ -50,9 +49,10 @@ const handlesignin = async (req, res) => {
   }
 };
 
+
+//handler function to handle the user profile of the user
 const handleUserProfile = async(req,res)=>{
   try{
-
     const data = await req.user
     console.log(data)
     const user = await User.findOne({email:data.email})
@@ -62,6 +62,8 @@ const handleUserProfile = async(req,res)=>{
   }
 }
 
+
+//handler function to handle the userSavedList
 const handleSavedList = async(req,res)=>{
   try{
   const user = await User.find({email:req.user.email})

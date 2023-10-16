@@ -2,10 +2,9 @@
 const axios= require('axios')
 const cheerio = require('cheerio')
 
-
+//handler function to handle search bar request
 const handleArticles = async (req, res) => {
     try {
-     
       const query = req.body.data.q
       const response = await axios.get(`https://scholar.google.com/scholar?q=${encodeURIComponent(query)}`);
   

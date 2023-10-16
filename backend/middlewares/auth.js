@@ -21,7 +21,6 @@ function checkForAuthentication() {
       return next();
     } catch (e) {
       console.log(e);
-      // Handle the case where the token is invalid or expired
       return res.status(401).json({ message: 'Invalid token' });
     }
   };

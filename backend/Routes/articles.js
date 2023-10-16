@@ -1,9 +1,10 @@
 const express = require('express')
 const { handleArticles } = require('../controllers/articles')
-const { checkForAuthentication } = require('../middlewares/auth')
+
 
 const articleRouter = express.Router()
 
+//get the articles from the search bar 
 articleRouter.post("/", handleArticles)
 
 

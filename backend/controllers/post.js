@@ -28,7 +28,7 @@ const handlePost = async (req, res) => {
 };
 
 
-
+//handler function to handle the LIke
 const handleLike = async (req, res) => {
   const postId = req.params.postId;
   const userId = req.user._id;
@@ -57,11 +57,11 @@ const handleLike = async (req, res) => {
   }
 };
 
+//handler function to handle the comment 
 const handleComment = async (req, res) => {
   const postId = req.params.postId;
   const userId = req.user._id;
   const { text } = req.body;
-
   try {
     const post = await Post.findById(postId);
     if (!post) {
@@ -82,10 +82,11 @@ const handleComment = async (req, res) => {
   }
 };
 
+//handler funtion to get all the posts  on the home page
 const handleGetAllPosts = async (req, res) => {
   try {
-    const posts = await Post.find(); // Use the 'find' method to retrieve all documents from the 'Post' collection
-    res.status(200).json(posts); // Respond with the retrieved posts as JSON
+    const posts = await Post.find(); 
+    res.status(200).json(posts); 
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal Server Error" });
