@@ -1,0 +1,32 @@
+/* Navbar container */
+nav {
+    background-color: #333; /* Background color */
+    padding: 10px; /* Padding around the links */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  /* Navbar links */
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    display: inline; /* Display links horizontally */
+    margin-right: 20px; /* Spacing between links */
+  }
+  
+  /* Link styling */
+  a {
+    color: #fff; /* Text color */
+    text-decoration: none; /* Remove underline from links */
+    font-weight: bold; /* Bold text */
+  }
+  
+  a:hover {
+    color: #007bff; /* Change color on hover */
+  }
+  
