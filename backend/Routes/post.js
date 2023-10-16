@@ -5,7 +5,7 @@ const { checkForAuthentication } = require('../middlewares/auth.js')
 const postRouter = express.Router()
 
 
-postRouter.post("/:postId/comment",checkForAuthentication("token"), handleComment)
+postRouter.post("/:postId/comment", handleComment)
 
 postRouter.post("/publish", handlePost)
 

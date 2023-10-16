@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import "../styles/navbar.css"; // Import the CSS file
 
 const Navbar = () => {
+  const token = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    // Clear the token from local storage
+    localStorage.removeItem("token");
+  };
+
   return (
     <nav>
       <ul>
@@ -23,7 +30,15 @@ const Navbar = () => {
           <Link to="/messages">Messages</Link>
         </li>
         <li>
-          <Link to="/signin">SignIn</Link>
+          {token ? (
+            // If token is present, show "Log Out" link with logout handler
+            <Link to="/logout" onClick={handleLogout}>
+              Log Out
+            </Link>
+          ) : (
+            // If no token, show "Sign In" link
+            <Link to="/signin">Sign In</Link>
+          )}
         </li>
       </ul>
     </nav>

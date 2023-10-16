@@ -7,7 +7,6 @@ const handleArticles = async (req, res) => {
     try {
      
       const query = req.body.data.q
-      console.log(query)
       const response = await axios.get(`https://scholar.google.com/scholar?q=${encodeURIComponent(query)}`);
   
       if (response.status === 200) {

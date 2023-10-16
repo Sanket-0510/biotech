@@ -8,6 +8,7 @@ import Signin from './components/Signin';
 import Test from './components/Test';
 import { Routes, Route } from 'react-router-dom';
 import Search from './components/Search';
+import DM from './components/DM'
 function App() {
   return (
     <>
@@ -16,10 +17,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/test" element={<Test />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/saved-list" element={<SavedList />} />
+        <Route path="/savedList" element={<SavedList />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/search" element={<Search/>}/>
+        <Route path ="/messages" element={<DM/>}/>
       </Routes>
     </div>
     </>

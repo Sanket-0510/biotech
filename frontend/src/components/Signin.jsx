@@ -18,7 +18,7 @@ const Signin = () => {
         },
         data: JSON.stringify(payload),
       });
-       console.log(response.data)
+       console.log(response)
       if (response) {
         const  token  = response.data.token
         console.log(token)

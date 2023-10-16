@@ -8,18 +8,24 @@ const Search = () => {
 
   const handleSearch = async () => {
     try {
-        const response = await axios.post("http://localhost:9001/articles", {
-         data:{q: searchQuery},
-        });
-        console.log(response.data.articles);
-        setSearchResults(response.data.articles);
-      } catch (error) {
-        console.error("Error fetching search results:", error);
-        // Log the full error response
+      const token = localStorage.getItem('token');
+      const response = await axios.post("http://localhost:9001/articles", {data:{
+        q:searchQuery
+      }}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+      setSearchResults(response.data.articles);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+      if (error.response) {
         console.error("Full error response:", error.response);
       }
-      
+    }
   };
+  
+  
 
   return (
     <>

@@ -118,9 +118,10 @@ const userSchema = new mongoose.Schema({
 
 
 userSchema.static("matchPassword", async function(email,password){
-  console.log(email)
-  const user = await this.findOne({email})
-  console.log(user)
+
+  console.log(`email is ${email}`)
+  const user = await this.findOne({email:email})
+  console.log(`use is ${user}`)
   if (!user)  res.json({mssg: "user not found"})
   const salt = user.salt
   const providedPassword = createHmac("sha256", salt).update(password).digest("hex")

@@ -14,17 +14,9 @@ userRoute.get('/signup', (req, res) => {
 userRoute.post('/signup', handlesignup);
 
 
-userRoute.post("/",async(req,res)=>{
-  const user = await req.user
-  if(!user) return res.redirect("/signin")
-  return res.json(user.email)
-})
 
 
-userRoute.get("/logout", async(req,res)=>{
-  res.clearCookie("token").json({mssg: "logout successfully"})
-})
- 
+
 
 
 userRoute.get("/profile",handleUserProfile )
@@ -33,7 +25,7 @@ userRoute.get("/profile",handleUserProfile )
 userRoute.post('/signin', handlesignin)
 
 
-userRoute.get("/savedList", checkForAuthentication, handleSavedList)
+userRoute.get("/savedList",  handleSavedList)
 
 
 
