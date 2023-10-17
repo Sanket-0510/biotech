@@ -5,12 +5,9 @@ const handlePost = async (req, res) => {
   try {
     const user = await req.user;
     if (!user) {
-      res.redirect("/signin");
       console.log("user not found");
     }
-    console.log(user)
     const { title, readTime, description, content, tags } = req.body;
-    console.log(req.body)
     const newPost = new Post({
       title,
       readTime,
@@ -86,8 +83,6 @@ const handleComment = async (req, res) => {
 const handleGetAllPosts = async (req, res) => {
   try {
     const posts = await Post.find(); 
-
-    console.log("here in post")
     res.status(200).json(posts); 
   } catch (err) {
     console.error(err);

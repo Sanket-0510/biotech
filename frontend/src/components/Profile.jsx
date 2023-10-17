@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import Navbar from './Navbar';
 import axios from 'axios';
-import "../styles/profile.css"
+import "../styles/profile.css";
+
 const Profile = () => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchUserProfile = async () => {
-      
       const token = localStorage.getItem('token');
-      console.log(token)
+      if (!token) {
+        navigate('/signin'); 
+        return;
+      }
       try {
         const response = await axios.get('http://localhost:9001/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(response)
         if (response.status === 200) {
-          console.log(response.data)
           setUser(response.data);
         } else {
           console.error('Failed to fetch user profile:', response.statusText);
@@ -29,7 +32,7 @@ const Profile = () => {
     };
 
     fetchUserProfile();
-  }, []);
+  }, [navigate]); 
 
   return (
     <div>
@@ -40,10 +43,20 @@ const Profile = () => {
           <div>
             <p>Name: {user.name}</p>
             <p>Email: {user.email}</p>
+            
+          
+          <h2>Premium Status</h2>
+           {
+            !user.premium?(
+              <p>BUY PREMIUM : <button onClick={()=>navigate("/payment")}>BUY</button></p>
+            ): <p>PREMIUM</p>
+          }
           </div>
         ) : (
           <p>Loading user profile...</p>
         )}
+       
+       
       </div>
     </div>
   );

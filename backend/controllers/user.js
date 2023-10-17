@@ -34,13 +34,10 @@ const handlesignup = async (req, res) => {
 //handler function to handle sigin of user 
 const handlesignin = async (req, res) => {
   try {
-    console.log("here in sigin in")
-    const requestData = JSON.parse(req.body.data);
-    console.log(requestData)
+    const requestData = JSON.parse(req.body.data)
     if (requestData) {
       const { email, password } = requestData
       const token = await User.matchPassword(email, password);
-      console.log(token)
       res.json({ token });
     } else {
       res.status(400).json({ error: 'Invalid request format' });
@@ -55,7 +52,6 @@ const handlesignin = async (req, res) => {
 const handleUserProfile = async(req,res)=>{
   try{
     const data = await req.user
-    console.log(data)
     const user = await User.findOne({email:data.email})
     res.json(user)
   }catch(e){

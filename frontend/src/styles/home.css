@@ -81,3 +81,21 @@
     cursor: pointer;
   }
   
+  /* Add styles for the plus sign button */
+.plus-button {
+  background-color: blue;
+  color: white;
+  font-size: 24px; /* Adjust the size as needed */
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Style the create post button container */
+.create-post-button {
+  text-align: center;
+  margin: 10px;
+  text-decoration: none;
+}

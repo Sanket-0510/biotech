@@ -27,7 +27,10 @@ const { checkForAuthentication } = require('./middlewares/auth.js');
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())
 
-app.use(checkForAuthentication())
+const paymentRouter = require("./Routes/payment.js")
+app.use("/payment", paymentRouter)
+
+// app.use(checkForAuthentication())
 
 
 

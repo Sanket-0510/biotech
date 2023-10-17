@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import axios from 'axios';
-
 import Navbar from './Navbar';
-
 import '../styles/home.css';
 
 const Home = () => {
@@ -56,8 +55,12 @@ const Home = () => {
     <>
       <Navbar />
       <div className="home-container">
+      <Link to="/createPost" className="create-post-button">
+            <button className="plus-button">+</button>
+      </Link>
         <h2>Posts</h2>
         <div className="posts-container">
+          
           {posts.map((post) => (
             <div key={post._id} className="post">
               <p className="post-content">{post.content}</p>

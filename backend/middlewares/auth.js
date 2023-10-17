@@ -1,29 +1,30 @@
-const { verifyJwt } = require('../util');
-
-function checkForAuthentication() {
-  return (req, res, next) => {
-    const token = req.headers.authorization;
+const jwt = require('jsonwebtoken'); // Import the 'jsonwebtoken' module
+const {verifyJwt} =require("../util")
+const auth = async (req, res, next) => {
+  try {
+    // Extracting JWT from request cookies, body, or header
+   
+    const token =
+      req.cookies.token ||
+      req.body.token ||
+      (req.headers.authorization && req.headers.authorization.replace("Bearer ", ""));
     if (!token) {
-      // No token provided, so you proceed to the next middleware or route without setting req.user.
-      return res.json({mssage:"error"})
+      return res.status(401).json({ success: false, message: `Token Missing` });
     }
 
-    const tokenParts = token.split(' ');
-    if (tokenParts.length !== 2 || tokenParts[0] !== 'Bearer') {
-      return res.status(401).json({ message: 'Invalid token format' });
-    }
-
-    const tokenValue = tokenParts[1];
     try {
-      const userPayload = verifyJwt(tokenValue);
-      req.user = userPayload;
-      console.log(req.user);
-      return next();
-    } catch (e) {
-      console.log(e);
-      return res.status(401).json({ message: 'Invalid token' });
+      const decode = await verifyJwt(token)
+      req.user = decode;
+      next();
+    } catch (error) {
+      return res.status(401).json({ success: false, message: "Token is invalid" });
     }
-  };
-}
+  } catch (error) {
+    return res.status(401).json({
+      success: false,
+      message: `Something Went Wrong While Validating the Token`,
+    });
+  }
+};
 
-module.exports = { checkForAuthentication };
+module.exports = { auth };

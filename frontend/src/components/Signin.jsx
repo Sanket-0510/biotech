@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import axios from 'axios';
 import '../styles/signin.css';
-
+import { useNavigate } from 'react-router-dom';
 
 const Signin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigation = useNavigate()
   const handleSignIn = async () => {
     try {
       const payload = { email, password };
@@ -18,10 +18,10 @@ const Signin = () => {
         },
         data: JSON.stringify(payload),
       });
-       console.log(response)
+
       if (response) {
         const  token  = response.data.token
-        console.log(token)
+        if (token) navigation("/")
         localStorage.setItem('token', token);
       } else {
         console.error('Sign-in failed:', response.statusText);

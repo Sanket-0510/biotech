@@ -1,5 +1,3 @@
-
-import './App.css'
 import Home from './components/Home';
 import Profile from './components/Profile';
 import SavedList from './components/SavedList';
@@ -9,6 +7,9 @@ import Test from './components/Test';
 import { Routes, Route } from 'react-router-dom';
 import Search from './components/Search';
 import DM from './components/DM'
+import CreatePost from './components/CreatePost';
+import PaymentComponent from "./components/PaymentComponent"
+import './app.css'
 function App() {
   return (
     <>
@@ -22,6 +23,8 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/search" element={<Search/>}/>
         <Route path ="/messages" element={<DM/>}/>
+        <Route path="/createPost" element={<CreatePost/>}/>
+        <Route path="/payment" element={<PaymentComponent/>}/>
       </Routes>
     </div>
     </>
