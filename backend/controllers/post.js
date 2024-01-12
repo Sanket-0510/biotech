@@ -29,23 +29,21 @@ const handlePost = async (req, res) => {
 const handleLike = async (req, res) => {
   const postId = req.params.postId;
   const userId = req.user._id;
-
   try {
+    console.log(postId)
     const post = await Post.findById(postId);
     if (!post) {
       return res.status(404).json({ message: "Post not found" });
     }
-
-    const likedByUser = post.likes.liked_by.includes(userId);
+    const likedByUser = post.likes.includes(userId);
 
     if (likedByUser) {
-      post.likes.liked_by = post.likes.liked_by.filter(
+      post.likes = post.likes.filter(
         (id) => id.toString() !== userId.toString()
       );
     } else {
-      post.likes.liked_by.push(userId);
+      post.likes.push(userId);
     }
-
     await post.save();
     res.json({ message: "Like updated successfully", liked: !likedByUser });
   } catch (error) {
@@ -54,11 +52,14 @@ const handleLike = async (req, res) => {
   }
 };
 
+
 //handler function to handle the comment 
 const handleComment = async (req, res) => {
   const postId = req.params.postId;
   const userId = req.user._id;
-  const { text } = req.body;
+  console.log(req.user)
+  
+  const  text  = req.body.data;
   try {
     const post = await Post.findById(postId);
     if (!post) {
@@ -67,8 +68,10 @@ const handleComment = async (req, res) => {
 
     const comment = {
       user_id: userId,
+      user_name: req.user.name,
       comment: text,
     };
+    console.log(comment)
 
     post.comments.push(comment);
     await post.save();
