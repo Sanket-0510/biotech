@@ -25,7 +25,7 @@ const Signup = () => {
         password,
       };
 
-      const response = await axios.post('http://localhost:9001/signup', userData);
+      const response = await axios.post(`http://${process.env.REACT_APP_URL}:9001/signup`, userData);
 
       if (response.ok) {
         // Handle successful signup, e.g., navigate to the user's profile page

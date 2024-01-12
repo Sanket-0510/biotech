@@ -16,7 +16,7 @@ const Profile = () => {
         return;
       }
       try {
-        const response = await axios.get('http://localhost:9001/profile', {
+        const response = await axios.get(`http://${process.env.REACT_APP_URL}:9001/profile`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
