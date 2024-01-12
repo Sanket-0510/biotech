@@ -18,7 +18,7 @@ const Search = () => {
   const handleSearch = async () => {
     try {
       const token = localStorage.getItem("token");
-
+      console.log(process.env.REACT_APP_URL)
       if (!token) {
         return;
       }

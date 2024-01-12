@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken'); // Import the 'jsonwebtoken' module
 const {verifyJwt} =require("../util")
 const auth = async (req, res, next) => {
   try {
-    // Extracting JWT from request cookies, body, or header
    
     const token =
       req.cookies.token ||

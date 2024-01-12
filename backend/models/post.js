@@ -23,6 +23,10 @@ const postSchema = new mongoose.Schema({
           ref: 'User',
           default: null,
         },
+        user_name:{
+          type:String,
+          default:''
+        },
         comment: {
           type: String,
           default: '',
