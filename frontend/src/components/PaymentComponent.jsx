@@ -12,14 +12,14 @@ function PaymentComponent() {
   async function displayRazorpay() {
     
     const token = localStorage.getItem("token");
-    const key = await axios.get(`http://${process.env.REACT_APP_URL}:9001/payment/getKeyId`, {
+    const key = await axios.get(`http://${process.env.REACT_APP_URL}/payment/getKeyId`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
    
    
-    const result = await axios.post(`http://${process.env.REACT_APP_URL}:9001/payment/create-order`, null, {
+    const result = await axios.post(`http://${process.env.REACT_APP_URL}/payment/create-order`, null, {
   headers: {
     Authorization: `Bearer ${token}`,
   },

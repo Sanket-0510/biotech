@@ -24,7 +24,7 @@ const Search = () => {
       }
 
       const response = await axios.post(
-        `http://${process.env.REACT_APP_URL}:9001/articles`,
+        `http://${process.env.REACT_APP_URL}/articles`,
         { data: { q: searchQuery } },
         {
           headers: {
