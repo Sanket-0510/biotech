@@ -19,7 +19,7 @@ const Home = () => {
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await axios.get(`http://${process.env.REACT_APP_URL}/post/getAllPosts`, { headers });
+      const response = await axios.get(`${process.env.REACT_APP_URL}/post/getAllPosts`, { headers });
       console.log(response);
       setPosts(response.data);
     } catch (error) {

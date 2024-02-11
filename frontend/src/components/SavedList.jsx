@@ -23,7 +23,7 @@ const SavedList = () => {
       },
     };
 
-    axios.get(`http://${process.env.REACT_APP_URL}/savedList`, config)
+    axios.get(`${process.env.REACT_APP_URL}/savedList`, config)
       .then((response) => {
         setSavedItems(response.data);
       })

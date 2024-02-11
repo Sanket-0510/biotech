@@ -27,7 +27,7 @@ const CreatePost = () => {
 
   const handleSubmit = async() => {
     const token = localStorage.getItem('token')
-    const res = await axios.post(`http://${process.env.REACT_APP_URL}/post/publish`, post, {
+    const res = await axios.post(`${process.env.REACT_APP_URL}/post/publish`, post, {
       headers:{
         Authorization: `Bearer ${token}`,
       }
